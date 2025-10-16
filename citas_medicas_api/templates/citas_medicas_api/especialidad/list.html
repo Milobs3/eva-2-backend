@@ -8,14 +8,14 @@
     <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Descripción</th> <!-- Agregamos la columna -->
+        <th>Descripción</th> 
         <th>Acciones</th>
     </tr>
     {% for especialidad in especialidades %}
     <tr>
         <td>{{ especialidad.id }}</td>
         <td>{{ especialidad.nombre }}</td>
-        <td>{{ especialidad.descripcion }}</td> <!-- Mostramos la descripción -->
+        <td>{{ especialidad.descripcion }}</td>
         <td>
             <a class="btn btn-primary btn-sm" href="{% url 'especialidad-update' especialidad.id %}">Editar</a>
             <a class="btn btn-danger btn-sm" href="{% url 'especialidad-delete' especialidad.id %}">Eliminar</a>

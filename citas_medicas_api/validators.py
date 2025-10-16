@@ -7,7 +7,7 @@ def validar_rut(value):
     rut_regex = re.compile(r'^\d{7,8}-[0-9kK]$')
     if not rut_regex.match(value):
         raise ValidationError('RUT inválido. Formato esperado: 12345678-9')
-    # Aquí podrías agregar validación de dígito verificador real si quieres
+
 
 def validar_email(value):
     """Valida el correo electrónico"""

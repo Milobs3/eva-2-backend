@@ -184,9 +184,8 @@ class ConsultaCreateView(CreateView):
     form_class = ConsultaMedicaForm
     template_name = 'citas_medicas_api/consulta_medica/create.html'
     
-    # Redirigir al listado al guardar
+    
     def get_success_url(self):
-        # Si querés mantener el filtro en la URL, podés hacer algo como:
         rut = self.request.GET.get('rut', '')
         if rut:
             return reverse_lazy('consulta-list') + f'?rut={rut}'
