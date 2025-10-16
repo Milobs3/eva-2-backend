@@ -1,0 +1,13 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Eliminar Seguro Médico{% endblock %}
+
+{% block content %}
+<h2>Eliminar Seguro Médico</h2>
+<p>¿Estás seguro que deseas eliminar el seguro de <strong>{{ seguro.paciente }}</strong> llamado <strong>{{ seguro.nombre }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'seguro-list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

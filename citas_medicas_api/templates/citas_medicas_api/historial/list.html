@@ -1,0 +1,29 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Historiales Médicos{% endblock %}
+{% block content %}
+<h2>Historiales Médicos</h2>
+<a href="{% url 'historial-create' %}" class="btn btn-success mb-2">Crear Historial</a>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Paciente</th>
+    <th>Médico</th>
+    <th>Consulta</th>
+    <th>Observaciones</th>
+    <th>Acciones</th>
+</tr>
+{% for historial in historiales %}
+<tr>
+    <td>{{ historial.id }}</td>
+    <td>{{ historial.paciente }}</td>
+    <td>{{ historial.medico }}</td>
+    <td>{{ historial.consulta }}</td>
+    <td>{{ historial.observaciones }}</td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'historial-update' historial.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'historial-delete' historial.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

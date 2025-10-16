@@ -1,0 +1,38 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Médicos{% endblock %}
+
+{% block content %}
+<h2>Médicos</h2>
+
+<a class="btn btn-success mb-2" href="{% url 'medico-create' %}">Crear Médico</a>
+
+<form method="get" class="mb-3">
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>RUT</th>
+    <th>Especialidad</th>
+    <th>Acciones</th>
+</tr>
+{% for medico in medicos %}
+<tr>
+    <td>{{ medico.id }}</td>
+    <td>{{ medico.nombre }}</td>
+    <td>{{ medico.rut }}</td>
+    <td>{{ medico.especialidad.nombre }}</td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'medico-update' medico.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'medico-delete' medico.id %}">Eliminar</a>
+    </td>
+</tr>
+{% empty %}
+<tr><td colspan="5" class="text-center">No se encontraron médicos.</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

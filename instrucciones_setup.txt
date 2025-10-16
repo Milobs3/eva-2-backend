@@ -1,0 +1,51 @@
+INSTRUCCIONES PARA CONFIGURAR EL ENTORNO EN WINDOWS (entorno virtual: eva2)
+
+1) Abrir PowerShell o CMD y situarse en la carpeta donde descargaste el proyecto:
+   > cd C:\ruta\a\la\carpeta\salud_vital_project
+
+2) Crear y activar el entorno virtual 'eva2':
+   > python -m venv eva2
+   > .\eva2\Scripts\Activate.ps1   # PowerShell
+   # o en cmd:
+   > .\eva2\Scripts\activate.bat
+
+3) Actualizar pip:
+   (eva2) > py -m pip install --upgrade pip
+
+4) Instalar dependencias:
+   (eva2) > pip install Django djangorestframework drf-spectacular psycopg2-binary django-filter
+
+5) Configurar variables de entorno para PostgreSQL (opcional, puedes editar settings.py directamente):
+   > setx PGDATABASE "salud_vital_db"
+   > setx PGUSER "salud_vital_user"
+   > setx PGPASSWORD "mi_password_seguro"
+   > setx PGHOST "localhost"
+   > setx PGPORT "5432"
+   (Cerrar y reabrir la terminal para que surtan efecto)
+
+6) Crear la base de datos y usuario en PostgreSQL (usar pgAdmin o psql). Ejemplo con psql:
+   # Abrir psql como postgres
+   > psql -U postgres
+   postgres=# CREATE DATABASE salud_vital_db;
+   postgres=# CREATE USER salud_vital_user WITH PASSWORD 'mi_password_seguro';
+   postgres=# GRANT ALL PRIVILEGES ON DATABASE salud_vital_db TO salud_vital_user;
+   postgres=# \q
+
+7) Migraciones:
+   (eva2) > python manage.py makemigrations
+   (eva2) > python manage.py migrate
+
+8) Crear superusuario (opcional):
+   (eva2) > python manage.py createsuperuser
+
+9) Cargar datos de prueba:
+   (eva2) > python manage.py loaddata citas_medicas_api/fixtures/initial_data.json
+
+10) Ejecutar servidor:
+   (eva2) > python manage.py runserver
+
+11) Rutas principales:
+   - Frontend templates: http://127.0.0.1:8000/especialidades/
+   - API root: http://127.0.0.1:8000/api/
+   - Swagger docs: http://127.0.0.1:8000/api/docs/
+   - Admin: http://127.0.0.1:8000/admin/

@@ -1,0 +1,11 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Eliminar Historial{% endblock %}
+{% block content %}
+<h2>Eliminar Historial Médico</h2>
+<p>¿Está seguro que desea eliminar el historial de {{ object.paciente }} con {{ object.medico }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'historial-list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

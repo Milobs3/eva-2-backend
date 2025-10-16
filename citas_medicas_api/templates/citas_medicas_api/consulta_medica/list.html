@@ -1,0 +1,29 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Consultas{% endblock %}
+{% block content %}
+<h2>Consultas</h2>
+
+<form method="get" class="mb-3">
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Paciente</th>
+    <th>Medico</th>
+    <th>Fecha</th>
+    <th>Estado</th>
+</tr>
+{% for consulta in consultas %}
+<tr>
+    <td>{{ consulta.id }}</td>
+    <td>{{ consulta.paciente }}</td>
+    <td>{{ consulta.medico }}</td>
+    <td>{{ consulta.fecha_consulta }}</td>
+    <td>{{ consulta.estado }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

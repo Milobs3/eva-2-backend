@@ -1,0 +1,9 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Eliminar Médico{% endblock %}
+{% block content %}
+<h2>¿Eliminar "{{ object.nombre }}"?</h2>
+<form method="post">{% csrf_token %}
+<button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
+<a class="btn btn-secondary mt-2" href="{% url 'medico-list' %}">Cancelar</a>
+{% endblock %}

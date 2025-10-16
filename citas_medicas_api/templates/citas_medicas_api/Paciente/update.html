@@ -1,0 +1,9 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Editar Paciente{% endblock %}
+{% block content %}
+<h2>Editar Paciente</h2>
+<form method="post">{% csrf_token %}{{ form.as_p }}
+<button type="submit" class="btn btn-success">Actualizar</button>
+</form>
+<a class="btn btn-secondary mt-2" href="{% url 'paciente-list' %}">Volver</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Actualizar Seguro Médico{% endblock %}
+
+{% block content %}
+<h2>Actualizar Seguro Médico</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="{% url 'seguro-list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

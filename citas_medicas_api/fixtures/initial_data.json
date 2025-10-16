@@ -1,0 +1,209 @@
+[
+  {
+    "model": "citas_medicas_api.especialidad",
+    "pk": 1,
+    "fields": {"nombre": "Cardiología", "descripcion": "Especialidad del corazón y sistema circulatorio"}
+  },
+  {
+    "model": "citas_medicas_api.especialidad",
+    "pk": 2,
+    "fields": {"nombre": "Dermatología", "descripcion": "Enfermedades de la piel"}
+  },
+  {
+    "model": "citas_medicas_api.especialidad",
+    "pk": 3,
+    "fields": {"nombre": "Pediatría", "descripcion": "Atención médica infantil"}
+  },
+  {
+    "model": "citas_medicas_api.especialidad",
+    "pk": 4,
+    "fields": {"nombre": "Neurología", "descripcion": "Trastornos del sistema nervioso"}
+  },
+  {
+    "model": "citas_medicas_api.especialidad",
+    "pk": 5,
+    "fields": {"nombre": "Ortopedia", "descripcion": "Lesiones y problemas de huesos y articulaciones"}
+  },
+
+  {
+    "model": "citas_medicas_api.paciente",
+    "pk": 1,
+    "fields": {"nombre": "Juan", "apellido": "Perez", "rut": "12345678-9", "fecha_nacimiento": "1985-05-12", "telefono": "987654321", "email": "juan.perez@mail.com", "tipo_sangre": "A+", "activo": true, "direccion": "Calle Falsa 123"}
+  },
+  {
+    "model": "citas_medicas_api.paciente",
+    "pk": 2,
+    "fields": {"nombre": "Maria", "apellido": "Lopez", "rut": "23456789-0", "fecha_nacimiento": "1990-03-22", "telefono": "912345678", "email": "maria.lopez@mail.com", "tipo_sangre": "B-", "activo": true, "direccion": "Av. Siempre Viva 742"}
+  },
+  {
+    "model": "citas_medicas_api.paciente",
+    "pk": 3,
+    "fields": {"nombre": "Carlos", "apellido": "Gonzalez", "rut": "34567890-1", "fecha_nacimiento": "1978-11-05", "telefono": "987123456", "email": "carlos.g@mail.com", "tipo_sangre": "O+", "activo": true, "direccion": "Calle Luna 55"}
+  },
+  {
+    "model": "citas_medicas_api.paciente",
+    "pk": 4,
+    "fields": {"nombre": "Ana", "apellido": "Martinez", "rut": "45678901-2", "fecha_nacimiento": "2000-07-18", "telefono": "923456789", "email": "ana.m@mail.com", "tipo_sangre": "AB+", "activo": true, "direccion": "Av. Sol 12"}
+  },
+  {
+    "model": "citas_medicas_api.paciente",
+    "pk": 5,
+    "fields": {"nombre": "Luis", "apellido": "Ramirez", "rut": "56789012-3", "fecha_nacimiento": "1995-12-30", "telefono": "954321678", "email": "luis.r@mail.com", "tipo_sangre": "O-", "activo": true, "direccion": "Calle Estrella 88"}
+  },
+
+  {
+    "model": "citas_medicas_api.seguromedico",
+    "pk": 1,
+    "fields": {"paciente": 1, "nombre": "Salud Total", "poliza": "ST-001"}
+  },
+  {
+    "model": "citas_medicas_api.seguromedico",
+    "pk": 2,
+    "fields": {"paciente": 2, "nombre": "Colmena", "poliza": "CL-002"}
+  },
+  {
+    "model": "citas_medicas_api.seguromedico",
+    "pk": 3,
+    "fields": {"paciente": 3, "nombre": "Banmedica", "poliza": "BM-003"}
+  },
+  {
+    "model": "citas_medicas_api.seguromedico",
+    "pk": 4,
+    "fields": {"paciente": 4, "nombre": "Consalud", "poliza": "CS-004"}
+  },
+  {
+    "model": "citas_medicas_api.seguromedico",
+    "pk": 5,
+    "fields": {"paciente": 5, "nombre": "VidaCare", "poliza": "VC-005"}
+  },
+
+  {
+    "model": "citas_medicas_api.medico",
+    "pk": 1,
+    "fields": {"nombre": "Pedro", "apellido": "Vargas", "rut": "11111111-1", "especialidad": 1, "matricula": "M-001", "telefono": "912345111", "activo": true}
+  },
+  {
+    "model": "citas_medicas_api.medico",
+    "pk": 2,
+    "fields": {"nombre": "Sofia", "apellido": "Rojas", "rut": "22222222-2", "especialidad": 2, "matricula": "M-002", "telefono": "912345222", "activo": true}
+  },
+  {
+    "model": "citas_medicas_api.medico",
+    "pk": 3,
+    "fields": {"nombre": "Miguel", "apellido": "Torres", "rut": "33333333-3", "especialidad": 3, "matricula": "M-003", "telefono": "912345333", "activo": true}
+  },
+  {
+    "model": "citas_medicas_api.medico",
+    "pk": 4,
+    "fields": {"nombre": "Carla", "apellido": "Fernandez", "rut": "44444444-4", "especialidad": 4, "matricula": "M-004", "telefono": "912345444", "activo": true}
+  },
+  {
+    "model": "citas_medicas_api.medico",
+    "pk": 5,
+    "fields": {"nombre": "Andres", "apellido": "Silva", "rut": "55555555-5", "especialidad": 5, "matricula": "M-005", "telefono": "912345555", "activo": true}
+  },
+
+  {
+    "model": "citas_medicas_api.tratamiento",
+    "pk": 1,
+    "fields": {"nombre": "Terapia Física", "descripcion": "Sesiones de fisioterapia", "duracion_dias": 30}
+  },
+  {
+    "model": "citas_medicas_api.tratamiento",
+    "pk": 2,
+    "fields": {"nombre": "Dieta Cardíaca", "descripcion": "Plan nutricional para corazón", "duracion_dias": 60}
+  },
+  {
+    "model": "citas_medicas_api.tratamiento",
+    "pk": 3,
+    "fields": {"nombre": "Vacuna Antigripal", "descripcion": "Prevención de gripe estacional", "duracion_dias": 1}
+  },
+  {
+    "model": "citas_medicas_api.tratamiento",
+    "pk": 4,
+    "fields": {"nombre": "Control de Diabetes", "descripcion": "Seguimiento de glucosa", "duracion_dias": 90}
+  },
+  {
+    "model": "citas_medicas_api.tratamiento",
+    "pk": 5,
+    "fields": {"nombre": "Rehabilitación Post-Operativa", "descripcion": "Recuperación tras cirugía", "duracion_dias": 45}
+  },
+
+  {
+    "model": "citas_medicas_api.medicamento",
+    "pk": 1,
+    "fields": {"nombre": "Paracetamol", "laboratorio": "Lab A", "stock": 100, "precio_unitario": "2.50"}
+  },
+  {
+    "model": "citas_medicas_api.medicamento",
+    "pk": 2,
+    "fields": {"nombre": "Ibuprofeno", "laboratorio": "Lab B", "stock": 150, "precio_unitario": "3.00"}
+  },
+  {
+    "model": "citas_medicas_api.medicamento",
+    "pk": 3,
+    "fields": {"nombre": "Amoxicilina", "laboratorio": "Lab C", "stock": 200, "precio_unitario": "5.00"}
+  },
+  {
+    "model": "citas_medicas_api.medicamento",
+    "pk": 4,
+    "fields": {"nombre": "Metformina", "laboratorio": "Lab D", "stock": 120, "precio_unitario": "4.50"}
+  },
+  {
+    "model": "citas_medicas_api.medicamento",
+    "pk": 5,
+    "fields": {"nombre": "Omeprazol", "laboratorio": "Lab E", "stock": 80, "precio_unitario": "6.00"}
+  },
+
+  {
+    "model": "citas_medicas_api.consultamedica",
+    "pk": 1,
+    "fields": {"paciente": 1, "medico": 1, "fecha_consulta": "2025-10-10T09:00:00Z", "motivo": "Dolor de pecho", "diagnostico": "Hipertensión leve", "estado": "FINALIZADA", "tratamientos": [1,2]}
+  },
+  {
+    "model": "citas_medicas_api.consultamedica",
+    "pk": 2,
+    "fields": {"paciente": 2, "medico": 2, "fecha_consulta": "2025-10-12T10:00:00Z", "motivo": "Erupción cutánea", "diagnostico": "Dermatitis", "estado": "FINALIZADA", "tratamientos": [3]}
+  },
+  {
+    "model": "citas_medicas_api.consultamedica",
+    "pk": 3,
+    "fields": {"paciente": 3, "medico": 3, "fecha_consulta": "2025-10-14T11:30:00Z", "motivo": "Chequeo pediátrico", "diagnostico": "Normal", "estado": "FINALIZADA", "tratamientos": [3]}
+  },
+  {
+    "model": "citas_medicas_api.consultamedica",
+    "pk": 4,
+    "fields": {"paciente": 4, "medico": 4, "fecha_consulta": "2025-10-15T14:00:00Z", "motivo": "Dolor de cabeza", "diagnostico": "Migraña", "estado": "PENDIENTE", "tratamientos": [4]}
+  },
+  {
+    "model": "citas_medicas_api.consultamedica",
+    "pk": 5,
+    "fields": {"paciente": 5, "medico": 5, "fecha_consulta": "2025-10-16T15:00:00Z", "motivo": "Dolor de rodilla", "diagnostico": "Lesión menisco", "estado": "PENDIENTE", "tratamientos": [5]}
+  },
+
+  {
+    "model": "citas_medicas_api.recetamedica",
+    "pk": 1,
+    "fields": {"consulta": 1, "observaciones": "Tomar con agua", "medicamentos": [1,2]}
+  },
+  {
+    "model": "citas_medicas_api.recetamedica",
+    "pk": 2,
+    "fields": {"consulta": 2, "observaciones": "Aplicar crema local", "medicamentos": [3]}
+  },
+  {
+    "model": "citas_medicas_api.recetamedica",
+    "pk": 3,
+    "fields": {"consulta": 3, "observaciones": "Vacuna única", "medicamentos": [3]}
+  },
+  {
+    "model": "citas_medicas_api.recetamedica",
+    "pk": 4,
+    "fields": {"consulta": 4, "observaciones": "Control diario", "medicamentos": [4]}
+  },
+  {
+    "model": "citas_medicas_api.recetamedica",
+    "pk": 5,
+    "fields": {"consulta": 5, "observaciones": "Reposo 1 semana", "medicamentos": [5]}
+  }
+]

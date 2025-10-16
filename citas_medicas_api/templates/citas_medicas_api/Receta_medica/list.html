@@ -1,0 +1,37 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Recetas Médicas{% endblock %}
+{% block content %}
+<h2>Recetas Médicas</h2>
+<a class="btn btn-success mb-2" href="{% url 'receta-create' %}">Crear Receta</a>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Paciente</th>
+    <th>Médico</th>
+    <th>Medicamento</th>
+    <th>Dosis</th>
+    <th>Acciones</th>
+</tr>
+{% for receta in recetas %}
+<tr>
+    <td>{{ receta.id }}</td>
+    <td>{{ receta.consulta.paciente.nombre }} {{ receta.consulta.paciente.apellido }}</td>
+    <td>{{ receta.consulta.medico.nombre }} {{ receta.consulta.medico.apellido }}</td>
+    <td>
+        {% for rm in receta.recetamedicamento_set.all %}
+            {{ rm.medicamento.nombre }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </td>
+    <td>
+        {% for rm in receta.recetamedicamento_set.all %}
+            {{ rm.dosis }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'receta-update' receta.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'receta-delete' receta.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

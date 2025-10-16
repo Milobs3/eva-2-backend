@@ -1,0 +1,25 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Tratamientos{% endblock %}
+{% block content %}
+<h2>Tratamientos</h2>
+<a class="btn btn-success mb-2" href="{% url 'tratamiento-create' %}">Crear Tratamiento</a>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Acciones</th>
+</tr>
+{% for tratamiento in tratamientos %}
+<tr>
+    <td>{{ tratamiento.id }}</td>
+    <td>{{ tratamiento.nombre }}</td>
+    <td>{{ tratamiento.descripcion }}</td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'tratamiento-update' tratamiento.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'tratamiento-delete' tratamiento.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

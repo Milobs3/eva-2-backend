@@ -1,0 +1,9 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block content %}
+  <h1>Editar Especialidad</h1>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning">Guardar</button>
+    <a href="{% url 'especialidad-list' %}" class="btn btn-secondary">Volver</a>
+  </form>
+{% endblock %}

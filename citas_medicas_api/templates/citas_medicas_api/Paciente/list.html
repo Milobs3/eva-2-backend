@@ -1,0 +1,31 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Pacientes{% endblock %}
+{% block content %}
+<h2>Pacientes</h2>
+<form method="get" class="mb-3">
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>RUT</th>
+    <th>Acciones</th>
+</tr>
+{% for paciente in filter.qs %}
+<tr>
+    <td>{{ paciente.id }}</td>
+    <td>{{ paciente.nombre }}</td>
+    <td>{{ paciente.apellido }}</td>
+    <td>{{ paciente.rut }}</td>
+    <td>
+        <a href="{% url 'paciente-update' paciente.id %}">Editar</a>
+        <a href="{% url 'paciente-delete' paciente.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

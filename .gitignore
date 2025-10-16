@@ -1,0 +1,38 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+
+# Entorno virtual
+env/
+venv/
+ENV/
+.venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3  # aunque usas PostgreSQL, por si acaso alguien crea SQLite
+media/
+staticfiles/
+
+# PostgreSQL
+*.psql
+*.dump
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Mac/Linux
+.DS_Store
+*.swp
+
+# Windows
+Thumbs.db

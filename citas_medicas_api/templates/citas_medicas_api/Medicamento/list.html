@@ -1,0 +1,25 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Medicamentos{% endblock %}
+{% block content %}
+<h2>Medicamentos</h2>
+<a class="btn btn-success mb-2" href="{% url 'medicamento-create' %}">Crear Medicamento</a>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Laboratorio</th>
+    <th>Acciones</th>
+</tr>
+{% for medicamento in medicamentos %}
+<tr>
+    <td>{{ medicamento.id }}</td>
+    <td>{{ medicamento.nombre }}</td>
+    <td>{{ medicamento.laboratorio }}</td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'medicamento-update' medicamento.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'medicamento-delete' medicamento.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

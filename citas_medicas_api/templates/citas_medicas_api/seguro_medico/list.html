@@ -1,0 +1,28 @@
+{% extends 'citas_medicas_api/base.html' %}
+{% block title %}Seguros Médicos{% endblock %}
+
+{% block content %}
+<h2>Seguros Médicos</h2>
+<a class="btn btn-success mb-2" href="{% url 'seguro-create' %}">Agregar Seguro</a>
+<table class="table table-striped">
+<tr>
+    <th>ID</th>
+    <th>Paciente</th>
+    <th>Nombre Seguro</th>
+    <th>Póliza</th>
+    <th>Acciones</th>
+</tr>
+{% for seguro in seguros %}
+<tr>
+    <td>{{ seguro.id }}</td>
+    <td>{{ seguro.paciente }}</td>
+    <td>{{ seguro.nombre }}</td>
+    <td>{{ seguro.poliza }}</td>
+    <td>
+        <a class="btn btn-primary btn-sm" href="{% url 'seguro-update' seguro.id %}">Editar</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'seguro-delete' seguro.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
