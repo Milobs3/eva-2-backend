@@ -1,7 +1,7 @@
 from django import forms
 from .models import (
     Especialidad, Paciente, Medico, ConsultaMedica,
-    Tratamiento, Medicamento, RecetaMedica,
+    Tratamiento, Medicamento, RecetaMedica, HistorialMedico 
 )
 
 # =======================================================
@@ -41,4 +41,9 @@ class MedicamentoForm(forms.ModelForm):
 class RecetaMedicaForm(forms.ModelForm):
     class Meta:
         model = RecetaMedica
+        fields = '__all__'
+        
+class HistorialMedicoForm(forms.ModelForm):
+    class Meta:
+        model = HistorialMedico
         fields = '__all__'

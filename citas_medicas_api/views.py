@@ -8,7 +8,7 @@ from django.views import View
 from .models import Especialidad, Paciente, Medico, ConsultaMedica, Tratamiento, Medicamento, RecetaMedica,HistorialMedico,SeguroMedico
 from .forms import (
     EspecialidadForm, PacienteForm, MedicoForm, ConsultaMedicaForm,
-    TratamientoForm, MedicamentoForm, RecetaMedicaForm
+    TratamientoForm, MedicamentoForm, RecetaMedicaForm,HistorialMedicoForm
 )
 
 # =======================================================
@@ -348,16 +348,9 @@ class HistorialListView(View):
 
 class HistorialCreateView(CreateView):
     model = HistorialMedico
-    fields = ['paciente', 'medico', 'consulta', 'observaciones']
+    form_class = HistorialMedicoForm
     template_name = 'citas_medicas_api/historial/create.html'
-    success_url = reverse_lazy('historial-list')
-
-    def post(self, request):
-        form = HistorialMedico(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('historial-list')
-        return render(request, 'citas_medicas_api/historial/create.html', {'form': form})
+    success_url = '/historiales/'
 
 class HistorialUpdateView(View):
     def get(self, request, pk):
