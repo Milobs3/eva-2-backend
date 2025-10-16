@@ -3,8 +3,10 @@
 {% block content %}
 <h2>Pacientes</h2>
 <form method="get" class="mb-3">
-    {{ filter.form.as_p }}
-    <button type="submit" class="btn btn-primary">Filtrar</button>
+    <div class="input-group">
+        <input type="text" name="rut" placeholder="Filtrar por RUT" class="form-control" value="{{ request.GET.rut }}">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
 </form>
 
 <table class="table table-striped">
@@ -12,20 +14,19 @@
     <th>ID</th>
     <th>Nombre</th>
     <th>Apellido</th>
-    <th>RUT</th>
     <th>Acciones</th>
 </tr>
-{% for paciente in filter.qs %}
+{% for paciente in pacientes %}
 <tr>
     <td>{{ paciente.id }}</td>
     <td>{{ paciente.nombre }}</td>
     <td>{{ paciente.apellido }}</td>
-    <td>{{ paciente.rut }}</td>
     <td>
-        <a href="{% url 'paciente-update' paciente.id %}">Editar</a>
-        <a href="{% url 'paciente-delete' paciente.id %}">Eliminar</a>
+        <a class="btn btn-primary btn-sm" href="#">Editar</a>
+        <a class="btn btn-danger btn-sm" href="#">Eliminar</a>
     </td>
 </tr>
 {% endfor %}
 </table>
+<a class="btn btn-success" href="{% url 'paciente-create' %}">Crear Paciente</a>
 {% endblock %}

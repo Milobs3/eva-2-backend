@@ -7,6 +7,7 @@
     {{ filter.form.as_p }}
     <button type="submit" class="btn btn-primary">Filtrar</button>
 </form>
+<a class="btn btn-success mb-3" href="{% url 'consulta-create' %}?{% if request.GET %}{{ request.GET.urlencode }}{% endif %}">Crear Consulta</a>
 
 <table class="table table-striped">
 <tr>
@@ -23,6 +24,11 @@
     <td>{{ consulta.medico }}</td>
     <td>{{ consulta.fecha_consulta }}</td>
     <td>{{ consulta.estado }}</td>
+    <td>
+    <a class="btn btn-primary btn-sm" href="{% url 'consulta-update' consulta.id %}">Editar</a>
+    <a class="btn btn-danger btn-sm" href="{% url 'consulta-delete' consulta.id %}">Eliminar</a>
+</td>
+
 </tr>
 {% endfor %}
 </table>

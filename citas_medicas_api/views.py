@@ -8,7 +8,7 @@ from django.views import View
 from .models import Especialidad, Paciente, Medico, ConsultaMedica, Tratamiento, Medicamento, RecetaMedica,HistorialMedico,SeguroMedico
 from .forms import (
     EspecialidadForm, PacienteForm, MedicoForm, ConsultaMedicaForm,
-    TratamientoForm, MedicamentoForm, RecetaMedicaForm,HistorialMedicoForm
+    TratamientoForm, MedicamentoForm, RecetaMedicaForm,HistorialMedicoForm,SeguroMedicoForm
 )
 
 # =======================================================
@@ -67,23 +67,30 @@ class EspecialidadDeleteView(View):
 # CRUD Paciente
 # =======================================================
 
-class PacienteListView(View):
-    def get(self, request):
-        filtro = PacienteFilter(request.GET, queryset=Paciente.objects.all())
-        return render(request, 'citas_medicas_api/paciente/list.html', {'filter': filtro})
+class PacienteListView(ListView):
+    model = Paciente
+    template_name = 'citas_medicas_api/paciente/list.html'
+    context_object_name = 'pacientes'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        rut = self.request.GET.get('rut')
+        if rut:
+            queryset = queryset.filter(rut__icontains=rut)
+        return queryset
 
-class PacienteCreateView(View):
-    def get(self, request):
-        form = PacienteForm()
-        return render(request, 'citas_medicas_api/paciente/create.html', {'form': form})
+class PacienteCreateView(CreateView):
+    model = Paciente
+    form_class = PacienteForm
+    template_name = 'citas_medicas_api/paciente/create.html'
+    success_url = '/pacientes/'
 
     def post(self, request):
         form = PacienteForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('paciente-list')
-        return render(request, 'citas_medicas_api/paciente/create.html', {'form': form})
+        return render(request, self.template_name, {'form': form})
 
 class PacienteUpdateView(View):
     def get(self, request, pk):
@@ -167,17 +174,24 @@ class ConsultaListView(View):
         return render(request, 'citas_medicas_api/consulta_medica/list.html', {'filter': filtro, 'consultas': filtro.qs})
 
 
-class ConsultaCreateView(View):
-    def get(self, request):
-        form = ConsultaMedicaForm()
-        return render(request, 'citas_medicas_api/consulta_medica/create.html', {'form': form})
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from .models import ConsultaMedica
+from .forms import ConsultaMedicaForm
 
-    def post(self, request):
-        form = ConsultaMedicaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('consulta-list')
-        return render(request, 'citas_medicas_api/consulta_medica/create.html', {'form': form})
+class ConsultaCreateView(CreateView):
+    model = ConsultaMedica
+    form_class = ConsultaMedicaForm
+    template_name = 'citas_medicas_api/consulta_medica/create.html'
+    
+    # Redirigir al listado al guardar
+    def get_success_url(self):
+        # Si querés mantener el filtro en la URL, podés hacer algo como:
+        rut = self.request.GET.get('rut', '')
+        if rut:
+            return reverse_lazy('consulta-list') + f'?rut={rut}'
+        return reverse_lazy('consulta-list')
+
 
 class ConsultaUpdateView(View):
     def get(self, request, pk):
@@ -384,17 +398,11 @@ class SeguroMedicoListView(View):
         seguros = SeguroMedico.objects.all()
         return render(request, 'citas_medicas_api/seguro_medico/list.html', {'seguros': seguros})
 
-class SeguroMedicoCreateView(View):
-    def get(self, request):
-        form = SeguroMedico()
-        return render(request, 'citas_medicas_api/seguro_medico/create.html', {'form': form})
-
-    def post(self, request):
-        form = SeguroMedico(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('seguro-list')
-        return render(request, 'citas_medicas_api/seguro_medico/create.html', {'form': form})
+class SeguroMedicoCreateView(CreateView):
+    model = SeguroMedico
+    form_class = SeguroMedicoForm
+    template_name = 'citas_medicas_api/seguro_medico/create.html'
+    success_url = '/seguros/'  # ruta a la lista de seguros
 
 class SeguroMedicoUpdateView(View):
     def get(self, request, pk):
